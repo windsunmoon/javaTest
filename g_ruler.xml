@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <!-- 主列表 -->
+    <ListView
+        android:id="@+id/g_base_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+    <!-- 无数据提示 -->
+    <TextView
+        android:id="@+id/g_base_list_nodata"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:visibility="gone"
+        android:gravity="center"
+        android:text="@string/g_nodata"
+        android:textSize="16sp" />
+    <!-- 加载进度框 -->
+    <com.wbx.testpub.wigdit.ProgressBarWithText
+        android:id="@+id/g_base_progressbar_withtext"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center"
+        android:gravity="center" />
+    
+    
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp" 
+        android:orientation="vertical"
+        >
+
+        <!-- 索引被点击到的时候放大显示 -->
+        <TextView
+            android:id="@+id/g_ruler_tag"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:background="@drawable/g_item_bk_normal"
+            android:gravity="center"
+            android:text="A"
+            android:textColor="#FF58BD21"
+            android:textSize="70sp"
+            android:textStyle="bold"
+             />
+    <!-- 字母索引导航-->
+        <com.wbx.testpub.wigdit.ruler.RulerWidget
+            android:id="@+id/g_ruler"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:orientation="vertical" />
+        
+    </FrameLayout>
+</FrameLayout>
