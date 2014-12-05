@@ -17,13 +17,14 @@ import java.util.regex.Pattern;
 public class TestZhengze {
 
 public static void main(String[] args) {
-	  final Pattern p = Pattern.compile("/hls/\\w*/");;
+	  final Pattern p = Pattern.compile("<!--\\w*-->");;
 
-	String str ="http://asp.slb.net/asp/hls/100/0303000a/3/default/99ee33d953634d0bbff77d752e19facf/55.ts";
+	String str ="dssdsdd<!--aaaaadsdjksfkj-->fdkgklfklhkhk<!--aaaafkjjfj-->ddd";
 	Matcher m = p.matcher(str);
 	while (m.find()) {
+		
 		System.out.println(m.group());
 	}
-		
+
 }
 }

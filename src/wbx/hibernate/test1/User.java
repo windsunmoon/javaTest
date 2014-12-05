@@ -4,8 +4,9 @@
 * @Description: TODO
 * @version V1.0   
 */
-package wbx.hibernate;
+package wbx.hibernate.test1;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 /**   
@@ -13,13 +14,17 @@ import java.sql.Date;
  * @date 2014-7-29 
  * @Description:
  */
-public class User {
+public class User implements Serializable{
 	
+	
+	private static final long serialVersionUID = 7105337274388266032L;
 	private int uid ;
 	private String uName;
 	private String telPhone;
 	private Date createTime;
 	private Date expireTime;
+	
+	private IDcard card;
 	
 	
 	public User() {
@@ -54,6 +59,17 @@ public class User {
 	}
 	public void setExpireTime(Date expireTime) {
 		this.expireTime = expireTime;
+	}
+	public IDcard getCard() {
+		return card;
+	}
+	public void setCard(IDcard card) {
+		this.card = card;
+	}
+	@Override
+	public String toString() {
+		return "User [uid=" + uid + ", uName=" + uName + ", telPhone=" + telPhone + ", createTime=" + createTime
+				+ ", expireTime=" + expireTime + ", card=" + card + "]";
 	}
 	
 	

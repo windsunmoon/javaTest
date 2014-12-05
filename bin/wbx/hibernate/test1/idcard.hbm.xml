@@ -1,7 +1,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC
     "-//Hibernate/Hibernate?Mapping?DTD?3.0//EN"
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
-<hibernate-mapping package="wbx.hibernate">  
+<hibernate-mapping package="wbx.hibernate.test1">  
     
 <!--
 
@@ -9,9 +9,9 @@ class标签 实体类映射到数据表
 * name属性：实体类的完整路径
 * table属性：实体类映射到数据库中的表名，如果省略，则为实体类的类名称
 -->
-<class name="User" table="dlmis.t_user">
+<class name="IDcard" table="dlmis.idcard">
 <!-- 映射数据库主键 映射到数据表中的字段名默认为类属性名，但可以利用column重新指定-->
-<id name="uid" column="usid" >
+<id name="cid" column="cid" >
 <!-- generator设置主键生成策略
 uuid:一万年内生成唯一的字符串
 -->
@@ -19,10 +19,6 @@ uuid:一万年内生成唯一的字符串
 </id>
 <!-- property 映射普通属性 映射到数据表中的字段名默认为类属性名，但可以利用column重新指
 定-->
-<property name="uName" column="uName"/>
-<property name="telPhone" column="telphone" />
-<property name="createTime"/><!-- Hibernate会自动根据实体类属性类型生成数据库表中字段
-类型 -->
-<property name="expireTime"/>
+<property name="pro" column="pro"/>
 </class>
 </hibernate-mapping>  

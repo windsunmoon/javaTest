@@ -4,12 +4,14 @@
 * @Description: TODO
 * @version V1.0   
 */
-package wbx.hibernate;
+package wbx.hibernate.test1;
 
 import java.sql.Date;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
+import wbx.hibernate.HiberNateUtils;
 
 /**   
  * @author wangboxuan   
@@ -20,8 +22,8 @@ public class UserClient {
 	public static void main(String[] args) {
 		addUser();
 		getUser();
-		updateUser();
-//		delUser();
+//		updateUser();
+		delUser();
 		HiberNateUtils.closeFactory();
 
 	}
@@ -34,21 +36,31 @@ public class UserClient {
 			System.out.println("----------增-------");
 
 			User a = new User();
-			a.setUid(101);
-			a.setuName("sss");
+			a.setuName("wbx");
 			a.setTelPhone("139397475");
 			a.setCreateTime(new Date(System.currentTimeMillis()));
+			
+			IDcard card = new IDcard();
+			
+			card.setCid(1006);
+			card.setPro("河南省");
+			a.setCard(card);
+			
+			
+			
 			tr =	session.beginTransaction();
 			session.save(a);
+
+//			session.save(card);
+
 			tr.commit();
 		} catch (Exception e) {
+			e.printStackTrace();
 			if (tr!=null) {
 				tr.rollback();
 			}
 		}finally{
-			if (session!=null) {
-				session.close();
-			}
+			
 		}
 	}
 	/*
@@ -88,19 +100,21 @@ get()和load()只根据主键查询，不能根据其它字段查询，如果想
 			session = HiberNateUtils.getSession();
 			tr =	session.beginTransaction();
 
-		    User u =  	(User) session.get(User.class, 101);
-		    User b =  	(User) session.load(User.class, 100);
+//		    User u =  	(User) session.get(User.class, 1006);
+		    User b =  	(User) session.load(User.class, 1006);
 
+			System.out.println(b);
+//			System.out.println(u);
 			tr.commit();
-			System.out.println(u.getuName());
+
+
+//			System.out.println(u.getuName());
 		} catch (Exception e) {
+			e.printStackTrace();
 			if (tr!=null) {
 				tr.rollback();
 			}
 		}finally{
-			if (session!=null) {
-				session.close();
-			}
 			
 		}
 	}
@@ -117,7 +131,7 @@ get()和load()只根据主键查询，不能根据其它字段查询，如果想
 			session = HiberNateUtils.getSession();
 			tr =	session.beginTransaction();
 
-		    User u =  	(User) session.get(User.class, 101);
+		    User u =  	(User) session.get(User.class, 1006);
             
 		    u.setTelPhone("12asdfsfgg"); 
 		     
@@ -128,9 +142,7 @@ get()和load()只根据主键查询，不能根据其它字段查询，如果想
 				tr.rollback();
 			}
 		}finally{
-			if (session!=null) {
-				session.close();
-			}
+			
 			
 		}
 	}
@@ -147,7 +159,12 @@ get()和load()只根据主键查询，不能根据其它字段查询，如果想
 			session = HiberNateUtils.getSession();
 			tr =	session.beginTransaction();
 
-		    User u =  	(User) session.get(User.class, 101);
+		    User u =  	new User();
+		    IDcard card = new IDcard();
+		    card.setCid(1006);
+		    u.setUid(1006);
+		    
+		    u.setCard(card);
             
 		    session.delete(u); 
 			tr.commit();
@@ -157,9 +174,7 @@ get()和load()只根据主键查询，不能根据其它字段查询，如果想
 				tr.rollback();
 			}
 		}finally{
-			if (session!=null) {
-				session.close();
-			}
+			
 			
 		}
 	}
